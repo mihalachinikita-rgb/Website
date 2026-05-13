@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Build | Construcții de Viitor</title>
+    <style>
+        /* Stiluri Generale */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        /* Secțiunea Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .btn {
+            background: #e67e22;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #d35400; }
+
+        /* Secțiuni */
+        section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        
+        .card {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        /* Interactivitate: Calculator */
+        .calculator-box {
+            background: #34495e;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        input, select {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: none;
+        }
+
+        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><strong>MODERN BUILD</strong></div>
+            <div>
+                <a href="#acasa">Acasă</a>
+                <a href="#servicii">Servicii</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="acasa" class="hero">
+        <h1>Construim Visul Tău</h1>
+        <p>Calitate, Integritate și Inovație în fiecare proiect.</p>
+        <a href="#servicii" class="btn">Vezi Servicii</a>
+    </section>
+
+    <section id="servicii">
+        <h2 style="text-align:center">Serviciile Noastre</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Rezidențial</h3>
+                <p>Case la cheie, vile moderne și renovări complete pentru confortul familiei tale.</p>
+            </div>
+            <div class="card">
+                <h3>Industrial</h3>
+                <p>Hale metalice, depozite și spații comerciale optimizate pentru afacerea ta.</p>
+            </div>
+            <div class="card">
+                <h3>Consultanță</h3>
+                <p>Management de proiect și asistență în obținerea autorizațiilor necesare.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator">
+        <div class="calculator-box">
+            <h2>Calculator Estimativ de Preț</h2>
+            <p>Află costul aproximativ pentru construcția ta (la roșu).</p>
+            
+            <label>Suprafața dorită (m²):</label>
+            <input type="number" id="sqm" placeholder="Ex: 100" oninput="calculate()">
+            
+            <label>Tip Materiale:</label>
+            <select id="material" onchange="calculate()">
+                <option value="400">Standard (400€/m²)</option>
+                <option value="600">Premium (600€/m²)</option>
+                <option value="850">Lux (850€/m²)</option>
+            </select>
+
+            <h3 id="resultText">Total estimat: 0 €</h3>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 style="text-align:center">Contactează-ne</h2>
+        <form action="#" style="max-width: 600px; margin: auto;">
+            <input type="text" placeholder="Numele tău" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mesajul tău" style="width: 100%; height: 100px; margin: 10px 0; border-radius: 4px; padding: 10px;"></textarea>
+            <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Trimite Mesaj</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Modern Build Construction. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const sqm = document.getElementById('sqm').value;
+            const pricePerM = document.getElementById('material').value;
+            const resultText = document.getElementById('resultText');
+
+            if (sqm > 0) {
+                const total = sqm * pricePerM;
+                resultText.innerText = "Total estimat: " + total.toLocaleString() + " €";
+            } else {
+                resultText.innerText = "Total estimat: 0 €";
+            }
+        }
+    </script>
+</body>
+</html>
