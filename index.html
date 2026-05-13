@@ -3,103 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Build | Construcții de Viitor</title>
+    <title>Constructorul Junior | Ghid Pas cu Pas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Stiluri Generale */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+        
+        :root {
+            --const-yellow: #ffcc00;
+            --const-dark: #1a1a1a;
+            --const-blue: #0056b3;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Open Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
-        header {
-            background: #2c3e50;
-            color: #fff;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+        h1, h2, h3, .nav-link {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bg-yellow-const { background-color: var(--const-yellow); }
+        .text-yellow-const { color: var(--const-yellow); }
+        
+        .sticky-nav {
+            position: sticky;
             top: 0;
             z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(5px);
         }
 
-        nav {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+        .section-padding { padding: 80px 20px; }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-        }
+        .quiz-option:hover { background-color: #f3f4f6; }
+        .quiz-correct { background-color: #10b981 !important; color: white; }
+        .quiz-wrong { background-color: #ef4444 !important; color: white; }
 
-        /* Secțiunea Hero */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding-top: 60px;
-        }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .btn {
-            background: #e67e22;
-            color: white;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #d35400; }
-
-        /* Secțiuni */
-        section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        
-        .card {
-            background: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); }
-
-        /* Interactivitate: Calculator */
-        .calculator-box {
-            background: #34495e;
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        input, select {
-            padding: 10px;
-            width: 100%;
-            margin: 10px 0;
-            border-radius: 4px;
-            border: none;
-        }
-
-        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem 0; }
+        .transition-smooth { transition: all 0.3s ease; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50">
 
-    <header>
-        <nav>
-            <div class="logo"><strong>MODERN BUILD</strong></div>
+    <!-- Navigație -->
+    <nav class="sticky-nav text-white border-b-4 border-yellow-const">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-yellow-const rounded flex items-center justify-center text-black font-bold">C</div>
+                <span class="font-bold tracking-tighter text-xl">CONSTRUCT-ED</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase">
+                <a href="#introducere" class="hover:text-yellow-const transition-colors">Introducere</a>
+                <a href="#etape" class="hover:text-yellow-const transition-colors">Etape</a>
+                <a href="#interactiv" class="hover:text-yellow-const transition-colors">Quiz</a>
+                <a href="#tipuri" class="hover:text-yellow-const transition-colors">Tipuri</a>
+                <a href="#contact" class="hover:text-yellow-const transition-colors">Contact</a>
+            </div>
+            <button class="md:hidden text-yellow-const">☰</button>
+        </div>
+    </nav>
+
+    <!-- Ero / Introducere -->
+    <section id="introducere" class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80" alt="Șantier în lucru" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Construim Viitorul</h1>
+            <p class="text-xl max-w-3xl mx-auto leading-relaxed text-slate-200">
+                O construcție nu este doar ciment și fier. Este rodul colaborării dintre <strong>Arhitecți</strong> (creativii), <strong>Ingineri</strong> (creierul tehnic) și <strong>Muncitori</strong> (forța care dă viață proiectului).
+            </p>
+            <div class="mt-10">
+                <a href="#etape" class="bg-yellow-const text-black px-8 py-4 rounded-full font-bold hover:scale-110 transition-transform inline-block">Începe Ghidul</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Etapele Construcției -->
+    <section id="etape" class="section-padding max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Procesul de Construcție</h2>
+            <p class="text-slate-500 italic">Urmează drumul de la prima schiță până la primirea cheilor.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Pasul 1 -->
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-blue-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">📐</div>
+                <h3 class="font-bold text-lg mb-2">1. Planificare</h3>
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" alt="Planificare" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Arhitectul desenează planurile, iar inginerul calculează rezistența.</p>
+                <div class="bg-blue-50 p-3 rounded-lg text-xs italic text-blue-800">
+                    <strong>Știai că?</strong> O clădire se mișcă la vânt pentru a nu se rupe!
+                </div>
+            </div>
+
+            <!-- Pasul 2 -->
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-yellow-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🚜</div>
+                <h3 class="font-bold text-lg mb-2">2. Pregătirea</h3>
+                <img src="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?auto=format&fit=crop&w=400&q=80" alt="Pregătirea terenului" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Curățăm terenul și trasăm exact unde vor fi pereții folosind sfori și țăruși.</p>
+                <div class="bg-yellow-50 p-3 rounded-lg text-xs italic text-yellow-800">
+                    <strong>Știai că?</strong> Nivelul terenului se verifică cu laserul!
+                </div>
+            </div>
+
+            <!-- Pasul 3 -->
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-slate-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🏗️</div>
+                <h3 class="font-bold text-lg mb-2">3. Fundația</h3>
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=400&q=80" alt="Fundație" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Turnăm baza din beton armat. Este fundația pe care stă toată greutatea.</p>
+                <div class="bg-slate-100 p-3 rounded-lg text-xs italic text-slate-800">
+                    <strong>Știai că?</strong> Betonul continuă să se întărească zeci de ani!
+                </div>
+            </div>
+
+            <!-- Pasul 4 -->
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-orange-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🧱</div>
+                <h3 class="font-bold text-lg mb-2">4. Structura</h3>
+                <img src="https://images.unsplash.com/photo-1429492450911-d773e12e8899?auto=format&fit=crop&w=400&q=80" alt="Structura" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Ridicăm pereții și stâlpii. Aceasta este etapa "La Roșu".</p>
+                <div class="bg-orange-50 p-3 rounded-lg text-xs italic text-orange-800">
+                    <strong>Știai că?</strong> Cărămizile moderne au găuri pentru a păstra căldura!
+                </div>
+            </div>
+
+            <!-- Mai multe etape... -->
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-red-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🏠</div>
+                <h3 class="font-bold text-lg mb-2">5. Acoperișul</h3>
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80" alt="Acoperiș" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Punem "pălăria" casei pentru a o proteja de ploaie și zăpadă.</p>
+                <div class="bg-red-50 p-3 rounded-lg text-xs italic text-red-800">
+                    <strong>Știai că?</strong> Tigla ceramică poate rezista peste 100 de ani!
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-cyan-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🔌</div>
+                <h3 class="font-bold text-lg mb-2">6. Instalații</h3>
+                <img src="https://images.unsplash.com/photo-1558489580-faa74691fdc5?auto=format&fit=crop&w=400&q=80" alt="Instalații" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Montăm sistemele de apă, curent și canalizare sub tencuială.</p>
+                <div class="bg-cyan-50 p-3 rounded-lg text-xs italic text-cyan-800">
+                    <strong>Știai că?</strong> În pereții unei case pot fi kilometri de cabluri!
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-pink-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">✨</div>
+                <h3 class="font-bold text-lg mb-2">7. Finisaje</h3>
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Finisaje" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Vopsim, punem gresia și parchetul. Acum casa devine "acasă".</p>
+                <div class="bg-pink-50 p-3 rounded-lg text-xs italic text-pink-800">
+                    <strong>Știai că?</strong> Culorile deschise fac camerele să pară mai mari!
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border-b-4 border-green-500 shadow-sm card-hover transition-smooth">
+                <div class="text-3xl mb-4">🔑</div>
+                <h3 class="font-bold text-lg mb-2">8. Predarea</h3>
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80" alt="Chei casă" class="w-full h-32 object-cover rounded-lg mb-4">
+                <p class="text-sm text-slate-600 mb-4">Facem verificarea finală și predăm cheile noului proprietar.</p>
+                <div class="bg-green-50 p-3 rounded-lg text-xs italic text-green-800">
+                    <strong>Știai că?</strong> Există o recepție oficială la finalul fiecărei construcții!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interactiv -->
+    <section id="interactiv" class="bg-slate-900 text-white section-padding">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">Testul Constructorului</h2>
+                <p class="text-slate-400">Verifică ce ai învățat până acum!</p>
+            </div>
+            
+            <div id="quiz-container" class="bg-white text-black p-8 rounded-3xl shadow-2xl">
+                <div id="question-box">
+                    <h3 id="question-text" class="text-xl font-bold mb-6">Care este prima etapă a unei construcții?</h3>
+                    <div class="grid gap-4" id="options-container">
+                        <button onclick="checkAnswer(0)" class="quiz-option w-full p-4 border-2 border-slate-200 rounded-xl text-left font-semibold transition-smooth">A) Turnarea betonului</button>
+                        <button onclick="checkAnswer(1)" class="quiz-option w-full p-4 border-2 border-slate-200 rounded-xl text-left font-semibold transition-smooth">B) Planificarea și proiectarea</button>
+                        <button onclick="checkAnswer(2)" class="quiz-option w-full p-4 border-2 border-slate-200 rounded-xl text-left font-semibold transition-smooth">C) Cumpărarea mobilei</button>
+                    </div>
+                </div>
+                <div id="quiz-feedback" class="mt-6 hidden p-4 rounded-xl text-center font-bold"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipuri de Construcții -->
+    <section id="tipuri" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Nu construim doar case!</h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Case -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-4 h-40">
+                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400&q=80" alt="Case" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h4 class="font-bold">Case</h4>
+                    <p class="text-xs text-slate-500">Locuințe individuale pentru familii.</p>
+                </div>
+                <!-- Blocuri -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-4 h-40">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Blocuri" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h4 class="font-bold">Blocuri</h4>
+                    <p class="text-xs text-slate-500">Clădiri înalte cu multe apartamente.</p>
+                </div>
+                <!-- Poduri -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-4 h-40">
+                        <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=400&q=80" alt="Poduri" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h4 class="font-bold">Poduri</h4>
+                    <p class="text-xs text-slate-500">Structuri complexe de legătură.</p>
+                </div>
+                <!-- Drumuri -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-4 h-40">
+                        <img src="https://images.unsplash.com/photo-1502123561633-87431e788931?auto=format&fit=crop&w=400&q=80" alt="Drumuri" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h4 class="font-bold">Drumuri</h4>
+                    <p class="text-xs text-slate-500">Infrastructura rutieră modernă.</p>
+                </div>
+                <!-- Industriale -->
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-4 h-40">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80" alt="Fabrici" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h4 class="font-bold">Industriale</h4>
+                    <p class="text-xs text-slate-500">Fabrici, hale și depozite.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8 px-4 border-t-8 border-yellow-const">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-12">
             <div>
-                <a href="#acasa">Acasă</a>
-                <a href
+                <h4 class="text-yellow-const font-bold text-xl mb-4">Construct-Ed</h4>
+                <p class="text-slate-400">Învățăm generațiile noi să construiască o lume mai bună, pas cu pas.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Contact</h4>
+                <p class="text-slate-400">📍 Str. Constructorilor nr. 42, București</p>
+                <p class="text-slate-400">📞 +40 700 000 000</p>
+                <p class="text-slate-400">✉️ info@construct-ed.ro</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Social Media</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-yellow-const hover:text-black transition-all">FB</a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-yellow-const hover:text-black transition-all">IG</a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-yellow-const hover:text-black transition-all">YT</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center border-t border-slate-800 pt-8 italic text-slate-500">
+            "Fundația fiecărei societăți este educația." - Construiește-ți viitorul cu noi!
+        </div>
+    </footer>
+
+    <script>
+        const quizData = [
+            {
+                q: "Care este prima etapă a unei construcții?",
+                options: ["Turnarea betonului", "Planificarea și proiectarea", "Cumpărarea mobilei"],
+                correct: 1
+            },
+            {
+                q: "Ce înseamnă etapa 'La Roșu'?",
+                options: ["Pereții sunt pictați în roșu", "Fundația a fost turnată", "Structura și zidăria sunt gata"],
+                correct: 2
+            },
+            {
+                q: "Cine desenează schițele unei case?",
+                options: ["Inginerul", "Arhitectul", "Zidarul"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function checkAnswer(idx) {
+            const feedback = document.getElementById('quiz-feedback');
+            const options = document.querySelectorAll('.quiz-option');
+            
+            if (idx === quizData[currentQuestion].correct) {
+                options[idx].classList.add('quiz-correct');
+                feedback.innerText = "Corect! Bravo, viitorule constructor!";
+                feedback.className = "mt-6 p-4 rounded-xl text-center font-bold bg-green-100 text-green-700";
+            } else {
+                options[idx].classList.add('quiz-wrong');
+                feedback.innerText = "Ups! Mai încearcă o dată.";
+                feedback.className = "mt-6 p-4 rounded-xl text-center font-bold bg-red-100 text-red-700";
+            }
+            feedback.classList.remove('hidden');
+
+            // Trecem la următoarea întrebare după 2 secunde
+            setTimeout(() => {
+                currentQuestion = (currentQuestion + 1) % quizData.length;
+                resetQuiz();
+            }, 2500);
+        }
+
+        function resetQuiz() {
+            const step = quizData[currentQuestion];
+            document.getElementById('question-text').innerText = step.q;
+            const container = document.getElementById('options-container');
+            container.innerHTML = step.options.map((opt, i) => 
+                `<button onclick="checkAnswer(${i})" class="quiz-option w-full p-4 border-2 border-slate-200 rounded-xl text-left font-semibold transition-smooth">
+                    ${String.fromCharCode(65 + i)}) ${opt}
+                </button>`
+            ).join('');
+            document.getElementById('quiz-feedback').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
